@@ -2,7 +2,7 @@
 
 namespace VladAssignment\Vendor\Controller\Adminhtml\Menu;
 
-class Index extends \Magento\Backend\App\Action
+class massDelete extends \Magento\Backend\App\Action
 {
 	protected $resultPageFactory = false;
 
@@ -18,7 +18,7 @@ class Index extends \Magento\Backend\App\Action
 	public function execute()
 	{
 		$resultPage = $this->resultPageFactory->create();
-		$resultPage->getConfig()->getTitle()->prepend((__('Vendor Portal')));
+		$resultPage->getConfig()->getTitle()->prepend((__('Oh boy its working')));
 
 		return $resultPage;
 	}

@@ -35,7 +35,7 @@ class InstallSchema implements InstallSchemaInterface
                     Table::TYPE_TEXT,
                     255,
                     ['nullable => false'],
-                    'Post Name'
+                    'Name'
                 )
                 ->addColumn(
                     'status',
@@ -51,6 +51,13 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable => false'],
                     'email'
                 )
+                ->addColumn(
+                    'action',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable => false'],
+                    'action'
+                )
                 ->setComment('Vendors Table');
             $installer->getConnection()->createTable($table);
 
@@ -58,10 +65,10 @@ class InstallSchema implements InstallSchemaInterface
                 $installer->getTable('assignment_vendor_entity'),
                 $setup->getIdxName(
                     $installer->getTable('assignment_vendor_entity'),
-                    ['name', 'email'],
+                    ['name', 'status', 'email', 'action'],
                     AdapterInterface::INDEX_TYPE_FULLTEXT
                 ),
-                ['name', 'email'],
+                ['name', 'status', 'email', 'action'],
                 AdapterInterface::INDEX_TYPE_FULLTEXT
             );
         }
